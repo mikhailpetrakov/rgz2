@@ -3,6 +3,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import sqlite3
 from os import path
+import os
 from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
