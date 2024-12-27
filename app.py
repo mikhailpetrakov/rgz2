@@ -4,9 +4,10 @@ from psycopg2.extras import RealDictCursor
 import sqlite3
 from os import path
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
-app.config['DB_TYPE'] = 'postgres'  # или 'sqlite' для SQLite
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'секретно-секретный секрет')
+app.config['DB_TYPE'] = os.getenv('DB_TYPE', 'postgres')  # Определяем тип базы данных (Postgres или SQLite)
 
 def db_connect():
     if current_app.config['DB_TYPE'] == 'postgres':
