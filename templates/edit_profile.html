@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Edit Profile</h1>
+    <form method="POST">
+        <label for="name">Имя</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}" required>
+        <label for="age">Возраст</label>
+        <input type="number" id="age" name="age" value="{{ user.age }}" required>
+        <label for="gender">Пол</label>
+        <select id="gender" name="gender" required>
+            <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Мужской</option>
+            <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Женский</option>
+        </select>
+        <label for="search_gender">Ищу:</label>
+        <select id="search_gender" name="search_gender" required>
+            <option value="male" {% if user.search_gender == 'male' %}selected{% endif %}>Мужчину</option>
+            <option value="female" {% if user.search_gender == 'female' %}selected{% endif %}>Женщину</option>
+        </select>
+        <label for="about">Обо мне:</label>
+        <textarea id="about" name="about">{{ user.about }}</textarea>
+        <label for="photo">Ссылка на фото:</label>
+        <input type="text" id="photo" name="photo" value="{{ user.photo }}">
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}  

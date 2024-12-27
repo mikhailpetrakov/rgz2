@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Поиск</h1>
+    <form method="POST">
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age">
+        <button type="submit">Поиск</button>
+    </form>
+
+    {% if user %}
+        <div class="profile">
+            <img src="{{ user.photo }}" alt="Profile Photo">
+            <h2>{{ user.name }}, {{ user.age }}</h2>
+            <p>{{ user.about }}</p>
+            <div class="button-group">
+                <form method="POST">
+                    <input type="hidden" name="liked_user_id" value="{{ user.id }}">
+                    <button type="submit" name="action" value="like">Лайк ❤️</button>
+                    <button type="submit" name="action" value="skip">Пропустить ✖️</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="message">
+            <p>Больше нет анкет.</p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="profile">
+        <h1>Профиль</h1>
+        <img src="{{ user.photo }}" alt="Profile Photo">
+        <h2>{{ user.name }}, {{ user.age }}</h2>
+        <p>{{ user.about }}</p>
+        <a href="{{ url_for('edit_profile') }}" class="button">Редактировать профиль</a>
+        <form method="POST" action="{{ url_for('hide_profile') }}" style="margin-top: 10px;">
+            <button type="submit" class="button">Спрятать профиль</button>
+        </form>
+        <form method="POST" action="{{ url_for('delete_account') }}" style="margin-top: 10px;">
+            <button type="submit" class="button">Удалить аккаунт</button>
+        </form>
+    </div>
+{% endblock %}

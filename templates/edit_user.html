@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Edit User</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ user.name }}" required>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="{{ user.age }}" required>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Female</option>
+        </select>
+        <label for="search_gender">Search Gender:</label>
+        <select id="search_gender" name="search_gender" required>
+            <option value="male" {% if user.search_gender == 'male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if user.search_gender == 'female' %}selected{% endif %}>Female</option>
+        </select>
+        <label for="about">About:</label>
+        <textarea id="about" name="about">{{ user.about }}</textarea>
+        <label for="photo">Photo URL:</label>
+        <input type="text" id="photo" name="photo" value="{{ user.photo }}">
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
